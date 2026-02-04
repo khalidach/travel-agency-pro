@@ -1,0 +1,42 @@
+import { Booking } from "@/types/dashboard";
+
+// constants/mockData.ts
+export const MOCK_BOOKINGS: Booking[] = [
+  {
+    id: "1",
+    clientName: "Ahmed El Amrani",
+    passportNumber: "AB123456",
+    sellingPrice: 12500,
+    status: "Paid",
+    date: "2024-03-15",
+  },
+  {
+    id: "2",
+    clientName: "Sanae Mansouri",
+    passportNumber: "CD789012",
+    sellingPrice: 8900,
+    status: "Pending",
+    date: "2024-03-14",
+  },
+  {
+    id: "3",
+    clientName: "Yassine Touhami",
+    passportNumber: "EF345678",
+    sellingPrice: 15000,
+    status: "Paid",
+    date: "2024-03-13",
+  },
+];
+
+export const PROGRAM_DATA = [
+  { name: "Hajj", count: 45 },
+  { name: "Umrah", count: 120 },
+  { name: "Tourism", count: 85 },
+];
+
+export const SERVICE_PROFITS = [
+  { name: "Visas", profit: 4500 },
+  { name: "Flights", profit: 12000 },
+  { name: "Insurance", profit: 2500 },
+  { name: "Hotels", profit: 8000 },
+];
