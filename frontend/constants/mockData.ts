@@ -1,6 +1,6 @@
+// constants/mockData.ts
 import { Booking } from "@/types/dashboard";
 
-// constants/mockData.ts
 export const MOCK_BOOKINGS: Booking[] = [
   {
     id: "1",
@@ -30,13 +30,13 @@ export const MOCK_BOOKINGS: Booking[] = [
 
 export const PROGRAM_DATA = [
   { name: "Hajj", count: 45 },
-  { name: "Umrah", count: 120 },
-  { name: "Tourism", count: 85 },
+  { name: "Omra", count: 120 },
+  { name: "Tourisme", count: 85 },
 ];
 
 export const SERVICE_PROFITS = [
   { name: "Visas", profit: 4500 },
-  { name: "Flights", profit: 12000 },
-  { name: "Insurance", profit: 2500 },
-  { name: "Hotels", profit: 8000 },
+  { name: "Vols", profit: 12000 },
+  { name: "Assurances", profit: 2500 },
+  { name: "Hôtels", profit: 8000 },
 ];

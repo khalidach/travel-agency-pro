@@ -42,8 +42,12 @@ export default function TrevioDashboard() {
       {/* Header & Global Filters */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Agency Overview</h1>
-          <p className="text-slate-500">Welcome back to Trevio Dashboard</p>
+          <h1 className="text-2xl font-bold text-slate-900">
+            Aperçu de l&apos;Agence
+          </h1>
+          <p className="text-slate-500">
+            Bon retour sur votre tableau de bord Trevio
+          </p>
         </div>
 
         <div className="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
@@ -66,25 +70,25 @@ export default function TrevioDashboard() {
       {/* Top Statistics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatCard
-          title="Total Revenue"
-          value="450,230 DH"
+          title="Chiffre d'Affaires"
+          value="450 230 DH"
           icon={Wallet}
           colorClass="bg-teal-50 text-teal-600"
         />
         <StatCard
-          title="Net Profit"
-          value="82,400 DH"
+          title="Bénéfice Net"
+          value="82 400 DH"
           icon={LayoutDashboard}
           colorClass="bg-sky-50 text-sky-600"
         />
         <StatCard
-          title="Active Bookings"
+          title="Réservations Actives"
           value="156"
           icon={Calendar}
           colorClass="bg-indigo-50 text-indigo-600"
         />
         <StatCard
-          title="Programs"
+          title="Programmes"
           value="12"
           icon={Briefcase}
           colorClass="bg-cyan-50 text-cyan-600"
@@ -96,7 +100,7 @@ export default function TrevioDashboard() {
         <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
           <h3 className="font-bold text-slate-800 mb-6 flex items-center gap-2">
             <LayoutDashboard className="w-5 h-5 text-teal-600" />
-            Service Profits Breakdown
+            Répartition des Profits par Service
           </h3>
           <ServiceProfitsChart data={SERVICE_PROFITS} />
         </div>
@@ -104,7 +108,7 @@ export default function TrevioDashboard() {
         <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
           <h3 className="font-bold text-slate-800 mb-6 flex items-center gap-2">
             <PieIcon className="w-5 h-5 text-sky-600" />
-            Program Distribution
+            Distribution des Programmes
           </h3>
           <ProgramDistribution data={PROGRAM_DATA} />
         </div>
@@ -113,9 +117,9 @@ export default function TrevioDashboard() {
       {/* Recent Activity Table */}
       <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="font-bold text-slate-800">Recent Bookings</h3>
+          <h3 className="font-bold text-slate-800">Réservations Récentes</h3>
           <button className="text-sm text-teal-600 font-semibold hover:underline">
-            View All
+            Voir tout
           </button>
         </div>
         <RecentActivityTable bookings={MOCK_BOOKINGS} />

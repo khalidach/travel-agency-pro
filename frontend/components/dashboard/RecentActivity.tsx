@@ -7,13 +7,13 @@ export const RecentActivityTable = ({ bookings }: { bookings: Booking[] }) => (
       <thead>
         <tr className="border-b border-slate-100">
           <th className="pb-4 font-semibold text-slate-600 text-sm">
-            Client Name
+            Nom du Client
           </th>
           <th className="pb-4 font-semibold text-slate-600 text-sm">
-            Passport
+            Passeport
           </th>
-          <th className="pb-4 font-semibold text-slate-600 text-sm">Price</th>
-          <th className="pb-4 font-semibold text-slate-600 text-sm">Status</th>
+          <th className="pb-4 font-semibold text-slate-600 text-sm">Prix</th>
+          <th className="pb-4 font-semibold text-slate-600 text-sm">Statut</th>
         </tr>
       </thead>
       <tbody className="divide-y divide-slate-50">
@@ -39,7 +39,7 @@ export const RecentActivityTable = ({ bookings }: { bookings: Booking[] }) => (
                     : "bg-amber-50 text-amber-700 border border-amber-100"
                 }`}
               >
-                {booking.status}
+                {booking.status === "Paid" ? "Payé" : "En attente"}
               </span>
             </td>
           </tr>
