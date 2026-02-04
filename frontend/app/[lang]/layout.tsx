@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  // Only include the languages you actually support
   return [{ lang: "ar" }, { lang: "fr" }];
 }
 
@@ -28,15 +27,17 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
+  // Make lang optional to satisfy the root (/) route validator
+  params: Promise<{ lang?: string }>;
 }) {
-  const { lang } = await params;
+  // Destructure with a default fallback (e.g., 'fr')
+  const { lang = "fr" } = await params;
   const direction = lang === "ar" ? "rtl" : "ltr";
 
   return (
     <html lang={lang} dir={direction} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors`}
       >
         <ThemeProvider
           attribute="class"

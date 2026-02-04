@@ -23,7 +23,13 @@
     },
     "table": {
       "title": "Réservations Récentes",
-      "viewAll": "Voir tout"
+      "viewAll": "Voir tout",
+      "clientName": "Nom du Client",
+      "passport": "Passeport",
+      "price": "Prix",
+      "status": "Statut",
+      "paid": "Payé",
+      "pending": "En attente"
     }
   }
 }

@@ -22,7 +22,6 @@ import {
   SERVICE_PROFITS,
 } from "@/constants/mockData";
 
-// Define the structure based on your ar.json and fr.json files
 interface DashboardDictionary {
   common: {
     title: string;
@@ -49,6 +48,12 @@ interface DashboardDictionary {
     table: {
       title: string;
       viewAll: string;
+      clientName: string;
+      passport: string;
+      price: string;
+      status: string;
+      paid: string;
+      pending: string;
     };
   };
 }
@@ -75,7 +80,6 @@ export function DashboardClient({ dict }: DashboardClientProps) {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 p-4 md:p-8 transition-colors">
-      {/* Header & Global Filters */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
@@ -103,7 +107,6 @@ export function DashboardClient({ dict }: DashboardClientProps) {
         </div>
       </div>
 
-      {/* Top Statistics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatCard
           title={dict.dashboard.stats.revenue}
@@ -131,7 +134,6 @@ export function DashboardClient({ dict }: DashboardClientProps) {
         />
       </div>
 
-      {/* Analytics Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
           <h3 className="font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
@@ -150,7 +152,6 @@ export function DashboardClient({ dict }: DashboardClientProps) {
         </div>
       </div>
 
-      {/* Recent Activity Table */}
       <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
         <div className="flex items-center justify-between mb-6">
           <h3 className="font-bold text-slate-800 dark:text-white">
@@ -160,7 +161,10 @@ export function DashboardClient({ dict }: DashboardClientProps) {
             {dict.dashboard.table.viewAll}
           </button>
         </div>
-        <RecentActivityTable bookings={MOCK_BOOKINGS} />
+        <RecentActivityTable
+          bookings={MOCK_BOOKINGS}
+          dict={dict.dashboard.table}
+        />
       </div>
     </div>
   );
