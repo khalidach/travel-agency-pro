@@ -1,0 +1,29 @@
+{
+  "common": {
+    "title": "تريفيو",
+    "dashboard": "لوحة التحكم",
+    "settings": "الإعدادات",
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع المضيء"
+  },
+  "dashboard": {
+    "header": {
+      "title": "نظرة عامة على الوكالة",
+      "subtitle": "مرحباً بك مجدداً في لوحة تحكم تريفيو"
+    },
+    "stats": {
+      "revenue": "إجمالي الإيرادات",
+      "profit": "صافي الربح",
+      "bookings": "الحجوزات النشطة",
+      "programs": "البرامج"
+    },
+    "charts": {
+      "serviceProfits": "توزيع الأرباح حسب الخدمة",
+      "programDist": "توزيع البرامج"
+    },
+    "table": {
+      "title": "أحدث الحجوزات",
+      "viewAll": "عرض الكل"
+    }
+  }
+}

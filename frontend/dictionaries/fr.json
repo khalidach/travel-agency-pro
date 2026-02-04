@@ -1,0 +1,29 @@
+{
+  "common": {
+    "title": "Trevio",
+    "dashboard": "Tableau de bord",
+    "settings": "Paramètres",
+    "darkMode": "Mode Sombre",
+    "lightMode": "Mode Clair"
+  },
+  "dashboard": {
+    "header": {
+      "title": "Aperçu de l'Agence",
+      "subtitle": "Bon retour sur votre tableau de bord Trevio"
+    },
+    "stats": {
+      "revenue": "Chiffre d'Affaires",
+      "profit": "Bénéfice Net",
+      "bookings": "Réservations Actives",
+      "programs": "Programmes"
+    },
+    "charts": {
+      "serviceProfits": "Répartition des Profits par Service",
+      "programDist": "Distribution des Programmes"
+    },
+    "table": {
+      "title": "Réservations Récentes",
+      "viewAll": "Voir tout"
+    }
+  }
+}
