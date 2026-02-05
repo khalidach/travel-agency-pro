@@ -1,9 +1,6 @@
+/* Updated globals.css to ensure global theme transitions are smooth */
 @import "tailwindcss";
 
-/* Tailwind CSS v4 Dark Mode Configuration
-  We override the default dark variant to use the class strategy. 
-  This ensures compatibility with next-themes which applies a 'dark' class to the html tag.
-*/
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -11,7 +8,6 @@
   --foreground: #171717;
 }
 
-/* Apply dark values when the .dark class is present on the root */
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
@@ -28,4 +24,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Added smooth color transition for the entire body */
+  transition:
+    background-color 0.5s ease-in-out,
+    color 0.5s ease-in-out;
 }
