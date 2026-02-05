@@ -15,6 +15,7 @@ interface HeaderDictionary {
   common: {
     title: string;
     settings: string;
+    logout: string;
   };
   dashboard: {
     header: {
@@ -80,7 +81,10 @@ export function Header({ dict, lang }: HeaderProps) {
                 <SettingsIcon size={16} /> {dict.common.settings}
               </button>
               <button className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">
-                <LogOut size={16} /> Deconnexion
+                <LogOut size={18} />
+                <span className="text-sm font-medium hidden md:block">
+                  {dict.common.logout}
+                </span>
               </button>
             </div>
           )}

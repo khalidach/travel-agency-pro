@@ -6,7 +6,17 @@
     "settings": "Paramètres",
     "darkMode": "Mode Sombre",
     "lightMode": "Mode Clair",
-    "currency": "Dh"
+    "currency": "Dh",
+    "logout": "Déconnexion"
+  },
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "management": "Gestion",
+    "bookings": "Réservations",
+    "programs": "Programmes",
+    "clients": "Clients",
+    "reports": "Rapports",
+    "settings": "Paramètres"
   },
   "dashboard": {
     "header": {

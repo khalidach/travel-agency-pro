@@ -65,7 +65,7 @@ export default async function RootLayout({
           <div className="min-h-screen flex flex-col">
             <Header dict={dict} lang={lang} />
             <div className="flex flex-1 overflow-hidden">
-              <Sidebar dict={dict} userRole={user.role} />
+              <Sidebar dict={dict} userRole={user.role} lang={lang} />
               <main className="flex-1 overflow-y-auto relative">
                 {children}
               </main>

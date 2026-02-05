@@ -6,7 +6,17 @@
     "settings": "الإعدادات",
     "darkMode": "الوضع الداكن",
     "lightMode": "الوضع المضيء",
-    "currency": "د.م"
+    "currency": "د.م",
+    "logout": "تسجيل الخروج"
+  },
+  "navigation": {
+    "dashboard": "لوحة التحكم",
+    "management": "الإدارة",
+    "bookings": "الحجوزات",
+    "programs": "البرامج",
+    "clients": "الزبائن",
+    "reports": "التقارير",
+    "settings": "الإعدادات"
   },
   "dashboard": {
     "header": {
