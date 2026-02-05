@@ -4,7 +4,8 @@
     "dashboard": "Tableau de bord",
     "settings": "Paramètres",
     "darkMode": "Mode Sombre",
-    "lightMode": "Mode Clair"
+    "lightMode": "Mode Clair",
+    "currency": "Dh"
   },
   "dashboard": {
     "header": {

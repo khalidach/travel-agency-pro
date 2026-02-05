@@ -1,8 +1,9 @@
-// components/dashboard/RecentActivity.tsx
+// frontend/components/dashboard/RecentActivity.tsx
 import { Booking } from "@/types/dashboard";
 
 interface RecentActivityProps {
   bookings: Booking[];
+  currency: string;
   dict: {
     clientName: string;
     passport: string;
@@ -15,6 +16,7 @@ interface RecentActivityProps {
 
 export const RecentActivityTable = ({
   bookings,
+  currency,
   dict,
 }: RecentActivityProps) => (
   <div className="overflow-x-auto">
@@ -48,7 +50,8 @@ export const RecentActivityTable = ({
               {booking.passportNumber}
             </td>
             <td className="py-4 text-sm font-semibold text-slate-900 dark:text-white">
-              {new Intl.NumberFormat("fr-MA").format(booking.sellingPrice)} DH
+              {new Intl.NumberFormat("fr-MA").format(booking.sellingPrice)}{" "}
+              {currency}
             </td>
             <td className="py-4">
               <span

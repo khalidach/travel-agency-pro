@@ -1,3 +1,4 @@
+// frontend/components/dashboard/DashboardClient.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -29,6 +30,7 @@ interface DashboardDictionary {
     settings: string;
     darkMode: string;
     lightMode: string;
+    currency: string;
   };
   dashboard: {
     header: {
@@ -110,13 +112,13 @@ export function DashboardClient({ dict }: DashboardClientProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatCard
           title={dict.dashboard.stats.revenue}
-          value="450 230 DH"
+          value={`450 230 ${dict.common.currency}`}
           icon={Wallet}
           colorClass="bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400"
         />
         <StatCard
           title={dict.dashboard.stats.profit}
-          value="82 400 DH"
+          value={`82 400 ${dict.common.currency}`}
           icon={LayoutDashboard}
           colorClass="bg-sky-50 dark:bg-sky-900/20 text-sky-600 dark:text-sky-400"
         />
@@ -164,6 +166,7 @@ export function DashboardClient({ dict }: DashboardClientProps) {
         <RecentActivityTable
           bookings={MOCK_BOOKINGS}
           dict={dict.dashboard.table}
+          currency={dict.common.currency}
         />
       </div>
     </div>

@@ -4,7 +4,8 @@
     "dashboard": "لوحة التحكم",
     "settings": "الإعدادات",
     "darkMode": "الوضع الداكن",
-    "lightMode": "الوضع المضيء"
+    "lightMode": "الوضع المضيء",
+    "currency": "د.م"
   },
   "dashboard": {
     "header": {
