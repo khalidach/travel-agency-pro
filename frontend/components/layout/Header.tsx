@@ -1,4 +1,3 @@
-// frontend/components/layout/Header.tsx
 "use client";
 
 import { useState, useRef } from "react";
@@ -12,8 +11,20 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
+interface HeaderDictionary {
+  common: {
+    title: string;
+    settings: string;
+  };
+  dashboard: {
+    header: {
+      title: string;
+    };
+  };
+}
+
 interface HeaderProps {
-  dict: any;
+  dict: HeaderDictionary;
   lang: string;
 }
 

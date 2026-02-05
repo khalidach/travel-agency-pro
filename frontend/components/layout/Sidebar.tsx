@@ -1,4 +1,3 @@
-// frontend/components/layout/Sidebar.tsx
 "use client";
 
 import { useState } from "react";
@@ -7,8 +6,20 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Lock } from "lucide-react";
 import { MENU_CONFIG } from "@/constants/navigation";
 
+/**
+ * Interface representing the structure of the translation dictionary
+ * required by the Sidebar component.
+ */
+interface SidebarDictionary {
+  dashboard: {
+    charts: {
+      services: Record<string, string>;
+    };
+  };
+}
+
 interface SidebarProps {
-  dict: any;
+  dict: SidebarDictionary;
   userRole: string;
   userLimits: Record<string, boolean>;
 }
@@ -19,7 +30,7 @@ export function Sidebar({ dict, userRole, userLimits }: SidebarProps) {
 
   const checkAccess = (accessKey?: string) => {
     if (!accessKey) return true;
-    return userLimits[accessKey] !== false; // Assuming limit check returns false if blocked
+    return userLimits[accessKey] !== false;
   };
 
   const filteredMenu = MENU_CONFIG.filter(
