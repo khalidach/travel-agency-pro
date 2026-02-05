@@ -14,9 +14,6 @@ import {
   Legend,
 } from "recharts";
 
-// Updated colors to be more "Neon-Soft" for dark mode compatibility
-const COLORS = ["#0d9488", "#0ea5e9", "#818cf8"];
-
 interface ProgramData {
   name: string;
   count: number;
