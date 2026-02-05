@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { getDictionary } from "@/lib/get-dictionaries";
+import { Header } from "@/components/layout/Header";
+import { Sidebar } from "@/components/layout/Sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +16,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Dynamic metadata based on language
 export async function generateMetadata({
   params,
 }: {
@@ -42,11 +43,22 @@ export default async function RootLayout({
 }) {
   const { lang = "fr" } = await params;
   const direction = lang === "ar" ? "rtl" : "ltr";
+  const dict = await getDictionary(lang as "ar" | "fr");
+
+  // Mock user data for initialization
+  const user = {
+    role: "admin",
+    limits: {
+      max_bookings: true,
+      max_clients: false, // Example of a restricted feature
+      can_manage_programs: true,
+    },
+  };
 
   return (
     <html lang={lang} dir={direction} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors`}
       >
         <ThemeProvider
           attribute="class"
@@ -54,7 +66,19 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="min-h-screen flex flex-col">
+            <Header dict={dict} lang={lang} />
+            <div className="flex flex-1 overflow-hidden">
+              <Sidebar
+                dict={dict}
+                userRole={user.role}
+                userLimits={user.limits}
+              />
+              <main className="flex-1 overflow-y-auto relative">
+                {children}
+              </main>
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
