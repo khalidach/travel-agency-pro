@@ -1,6 +1,7 @@
 {
   "common": {
     "title": "تريفيو",
+    "description": "إدارة مالية وفواتير متقدمة لوكالات الأسفار",
     "dashboard": "لوحة التحكم",
     "settings": "الإعدادات",
     "darkMode": "الوضع الداكن",
@@ -20,7 +21,18 @@
     },
     "charts": {
       "serviceProfits": "توزيع الأرباح حسب الخدمة",
-      "programDist": "توزيع البرامج"
+      "programDist": "توزيع البرامج",
+      "services": {
+        "visas": "تأشيرات",
+        "flights": "رحلات جوية",
+        "insurance": "تأمينات",
+        "hotels": "فنادق"
+      },
+      "programs": {
+        "hajj": "الحج",
+        "omra": "العمرة",
+        "tourism": "السياحة"
+      }
     },
     "table": {
       "title": "أحدث الحجوزات",

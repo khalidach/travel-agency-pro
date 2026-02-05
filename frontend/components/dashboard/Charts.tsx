@@ -61,8 +61,10 @@ export const ProgramDistribution = ({ data }: { data: ProgramData[] }) => (
 
 export const ServiceProfitsChart = ({
   data,
+  profitLabel, // New prop for translation
 }: {
   data: ServiceProfitData[];
+  profitLabel: string;
 }) => (
   <div className="h-[300px] w-full">
     <ResponsiveContainer width="100%" height="100%">
@@ -77,7 +79,7 @@ export const ServiceProfitsChart = ({
           dataKey="name"
           axisLine={false}
           tickLine={false}
-          tick={{ fill: "#94a3b8", fontSize: 12 }} // slate-400 for better dark/light visibility
+          tick={{ fill: "#94a3b8", fontSize: 12 }}
         />
         <YAxis
           axisLine={false}
@@ -95,6 +97,7 @@ export const ServiceProfitsChart = ({
         />
         <Bar
           dataKey="profit"
+          name={profitLabel} // This ensures the tooltip shows the translated word
           fill="#0d9488"
           radius={[4, 4, 0, 0]}
           barSize={40}

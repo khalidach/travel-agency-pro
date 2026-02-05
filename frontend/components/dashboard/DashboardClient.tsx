@@ -1,7 +1,6 @@
-// frontend/components/dashboard/DashboardClient.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   Wallet,
   Briefcase,
@@ -26,6 +25,7 @@ import {
 interface DashboardDictionary {
   common: {
     title: string;
+    description: string;
     dashboard: string;
     settings: string;
     darkMode: string;
@@ -46,6 +46,8 @@ interface DashboardDictionary {
     charts: {
       serviceProfits: string;
       programDist: string;
+      services: Record<string, string>;
+      programs: Record<string, string>;
     };
     table: {
       title: string;
@@ -71,6 +73,32 @@ export function DashboardClient({ dict }: DashboardClientProps) {
     const timer = setTimeout(() => setLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
+
+  // Translate labels for the charts
+  const translatedServiceData = useMemo(() => {
+    const mapping: Record<string, string> = {
+      Visas: dict.dashboard.charts.services.visas,
+      Vols: dict.dashboard.charts.services.flights,
+      Assurances: dict.dashboard.charts.services.insurance,
+      Hôtels: dict.dashboard.charts.services.hotels,
+    };
+    return SERVICE_PROFITS.map((item) => ({
+      ...item,
+      name: mapping[item.name] || item.name,
+    }));
+  }, [dict]);
+
+  const translatedProgramData = useMemo(() => {
+    const mapping: Record<string, string> = {
+      Hajj: dict.dashboard.charts.programs.hajj,
+      Omra: dict.dashboard.charts.programs.omra,
+      Tourisme: dict.dashboard.charts.programs.tourism,
+    };
+    return PROGRAM_DATA.map((item) => ({
+      ...item,
+      name: mapping[item.name] || item.name,
+    }));
+  }, [dict]);
 
   if (loading) {
     return (
@@ -142,7 +170,10 @@ export function DashboardClient({ dict }: DashboardClientProps) {
             <LayoutDashboard className="w-5 h-5 text-teal-600" />
             {dict.dashboard.charts.serviceProfits}
           </h3>
-          <ServiceProfitsChart data={SERVICE_PROFITS} />
+          <ServiceProfitsChart
+            data={translatedServiceData}
+            profitLabel={dict.dashboard.stats.profit} // Passed here
+          />
         </div>
 
         <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
@@ -150,7 +181,7 @@ export function DashboardClient({ dict }: DashboardClientProps) {
             <PieIcon className="w-5 h-5 text-sky-600" />
             {dict.dashboard.charts.programDist}
           </h3>
-          <ProgramDistribution data={PROGRAM_DATA} />
+          <ProgramDistribution data={translatedProgramData} />
         </div>
       </div>
 

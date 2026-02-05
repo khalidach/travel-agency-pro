@@ -1,6 +1,7 @@
 {
   "common": {
     "title": "Trevio",
+    "description": "Gestion financière et facturation avancée pour agences de voyage",
     "dashboard": "Tableau de bord",
     "settings": "Paramètres",
     "darkMode": "Mode Sombre",
@@ -20,7 +21,18 @@
     },
     "charts": {
       "serviceProfits": "Répartition des Profits par Service",
-      "programDist": "Distribution des Programmes"
+      "programDist": "Distribution des Programmes",
+      "services": {
+        "visas": "Visas",
+        "flights": "Vols",
+        "insurance": "Assurances",
+        "hotels": "Hôtels"
+      },
+      "programs": {
+        "hajj": "Hajj",
+        "omra": "Omra",
+        "tourism": "Tourisme"
+      }
     },
     "table": {
       "title": "Réservations Récentes",

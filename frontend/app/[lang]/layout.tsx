@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { getDictionary } from "@/lib/get-dictionaries";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,10 +14,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Trevio - Travel Agency Management",
-  description: "Advanced billing and financial management for travel agencies",
-};
+// Dynamic metadata based on language
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang?: string }>;
+}): Promise<Metadata> {
+  const { lang = "fr" } = await params;
+  const dict = await getDictionary(lang as "ar" | "fr");
+
+  return {
+    title: `${dict.common.title} - ${dict.common.dashboard}`,
+    description: dict.common.description,
+  };
+}
 
 export async function generateStaticParams() {
   return [{ lang: "ar" }, { lang: "fr" }];
@@ -27,10 +38,8 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  // Make lang optional to satisfy the root (/) route validator
   params: Promise<{ lang?: string }>;
 }) {
-  // Destructure with a default fallback (e.g., 'fr')
   const { lang = "fr" } = await params;
   const direction = lang === "ar" ? "rtl" : "ltr";
 
