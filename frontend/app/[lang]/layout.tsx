@@ -1,3 +1,4 @@
+// frontend/app/[lang]/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
@@ -48,11 +49,6 @@ export default async function RootLayout({
   // Mock user data for initialization
   const user = {
     role: "admin",
-    limits: {
-      max_bookings: true,
-      max_clients: false, // Example of a restricted feature
-      can_manage_programs: true,
-    },
   };
 
   return (
@@ -69,11 +65,7 @@ export default async function RootLayout({
           <div className="min-h-screen flex flex-col">
             <Header dict={dict} lang={lang} />
             <div className="flex flex-1 overflow-hidden">
-              <Sidebar
-                dict={dict}
-                userRole={user.role}
-                userLimits={user.limits}
-              />
+              <Sidebar dict={dict} userRole={user.role} />
               <main className="flex-1 overflow-y-auto relative">
                 {children}
               </main>

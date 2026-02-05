@@ -5,7 +5,6 @@ import {
   Settings,
   Users,
   FileText,
-  Globe,
 } from "lucide-react";
 import { MenuItem } from "@/types/navigation";
 
@@ -21,12 +20,8 @@ export const MENU_CONFIG: MenuItem[] = [
     icon: Briefcase,
     roles: ["admin", "manager"],
     subItems: [
-      { title: "bookings", href: "/bookings", accessKey: "max_bookings" },
-      {
-        title: "programs",
-        href: "/programs",
-        accessKey: "can_manage_programs",
-      },
+      { title: "bookings", href: "/bookings" },
+      { title: "programs", href: "/programs" },
     ],
   },
   {
