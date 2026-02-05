@@ -1,3 +1,4 @@
+/* khalidach/travel-agency-pro/frontend/components/layout/Sidebar.tsx */
 "use client";
 
 import { useState } from "react";
@@ -25,7 +26,7 @@ export function Sidebar({ dict, userRole, lang }: SidebarProps) {
   );
 
   return (
-    <aside className="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 min-h-screen overflow-y-auto transition-colors sidebar">
+    <aside className="w-64 border-r border-[var(--border-default)] bg-[var(--bg-surface)] min-h-screen overflow-y-auto transition-colors sidebar">
       <nav className="p-4 space-y-2">
         {filteredMenu.map((item) => {
           const hasSubItems = item.subItems && item.subItems.length > 0;
@@ -40,8 +41,8 @@ export function Sidebar({ dict, userRole, lang }: SidebarProps) {
                     onClick={() => setOpenSubmenu(isOpen ? null : item.title)}
                     className={`w-full flex items-center justify-between p-2 rounded-lg text-sm font-medium transition-colors ${
                       isOpen
-                        ? "bg-slate-50 dark:bg-slate-800 text-brand"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"
+                        ? "bg-[var(--bg-subtle)] text-brand"
+                        : "text-[var(--text-secondary)] hover:bg-[var(--bg-subtle)]"
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -63,7 +64,7 @@ export function Sidebar({ dict, userRole, lang }: SidebarProps) {
                           className={`flex items-center justify-between p-2 rounded-lg text-sm transition-colors ${
                             pathname === `/${lang}${sub.href}`
                               ? "text-brand font-semibold"
-                              : "text-slate-500 dark:text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
+                              : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                           }`}
                         >
                           <span>{dict.navigation[sub.title] || sub.title}</span>
@@ -77,8 +78,8 @@ export function Sidebar({ dict, userRole, lang }: SidebarProps) {
                   href={`/${lang}${item.href}`}
                   className={`flex items-center justify-between p-2 rounded-lg text-sm font-medium transition-colors ${
                     pathname === `/${lang}${item.href}`
-                      ? "bg-teal-50 dark:bg-teal-900/20 text-brand"
-                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"
+                      ? "bg-[var(--bg-active)] text-brand"
+                      : "text-[var(--text-secondary)] hover:bg-[var(--bg-subtle)]"
                   }`}
                 >
                   <div className="flex items-center gap-3">

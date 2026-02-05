@@ -8,13 +8,29 @@
   --background: #ffffff;
   --foreground: #0f172a; /* Slate 900 */
 
-  /* Brand Palette - Light Mode (Darker for contrast on white) */
-  --brand-light: #0ea5e9; /* Sky 500 */
-  --brand-default: #0d9488; /* Teal 600 */
-  --brand-dark: #0369a1; /* Sky 700 */
+  /* Semantic Layout Colors (Light Mode) */
+  --bg-surface: #ffffff; /* White */
+  --bg-subtle: #f8fafc; /* Slate 50 */
+  --bg-hover: #f1f5f9; /* Slate 100 */
+  --bg-active: #f0fdfa; /* Teal 50 (Brand Soft) */
+
+  --border-default: #e2e8f0; /* Slate 200 */
+  --border-subtle: #f1f5f9; /* Slate 100 */
+
+  /* Semantic Text Colors (Light Mode) */
+  --text-primary: #0f172a; /* Slate 900 */
+  --text-secondary: #475569; /* Slate 600 */
+  --text-muted: #64748b; /* Slate 500 */
+  --text-tertiary: #cbd5e1; /* Slate 300 (Dividers) */
+  --icon-muted: #94a3b8; /* Slate 400 */
+
+  /* Brand Palette */
+  --brand-light: #0ea5e9;
+  --brand-default: #0d9488;
+  --brand-dark: #0369a1;
 
   /* Chart & UI Elements */
-  --chart-grid: #e2e8f0; /* Slate 200 */
+  --chart-grid: #e2e8f0;
   --chart-text: #0f172a;
 
   /* Tooltips */
@@ -24,43 +40,57 @@
   --tooltip-text2: #0d9488;
 
   /* Typography Colors */
-  --text-type1: #0d9488; /* Matches Brand Default */
-  --text-type2: #0ea5e9; /* Matches Brand Light */
-  --text-type3: #818cf8; /* Indigo 400 */
+  --text-type1: #0d9488;
+  --text-type2: #0ea5e9;
+  --text-type3: #818cf8;
 
-  /* header color */
-
-  --logout-color: #ef4444; /* Red 500 for logout button in light mode */
+  --logout-color: #ef4444;
+  --box-color: #429b88; /* Teal 100 (Brand Soft) */
 }
 
 .dark {
   /* Core Backgrounds */
-  --background: #020617; /* Slate 950 (Deep, rich dark) */
-  --foreground: #f8fafc; /* Slate 50 (Soft white) */
+  --background: #020617; /* Slate 950 */
+  --foreground: #f8fafc; /* Slate 50 */
 
-  /* Brand Palette - Dark Mode (Lighter/Brighter for contrast on dark) */
-  --brand-light: #7dd3fc; /* Sky 300 - Bright & airy */
-  --brand-default: #2dd4bf; /* Teal 400 - Vibrant & legible */
-  --brand-dark: #0ea5e9; /* Sky 500 - Visible but deeper than light/default */
+  /* Semantic Layout Colors (Dark Mode) */
+  --bg-surface: #0f172a; /* Slate 900 */
+  --bg-subtle: #1e293b; /* Slate 800 */
+  --bg-hover: #1e293b; /* Slate 800 */
+  --bg-active: rgba(19, 78, 74, 0.3); /* Teal 900/30 (Brand Soft) */
+
+  --border-default: #1e293b; /* Slate 800 */
+  --border-subtle: #1e293b; /* Slate 800 */
+
+  /* Semantic Text Colors (Dark Mode) */
+  --text-primary: #f1f5f9; /* Slate 100 */
+  --text-secondary: #cbd5e1; /* Slate 300 (Previously Slate 400/300 mix) */
+  --text-muted: #94a3b8; /* Slate 400 */
+  --text-tertiary: #334155; /* Slate 700 */
+  --icon-muted: #64748b; /* Slate 500 */
+
+  /* Brand Palette */
+  --brand-light: #7dd3fc;
+  --brand-default: #2dd4bf;
+  --brand-dark: #0ea5e9;
 
   /* Chart & UI Elements */
-  --chart-grid: #1e293b; /* Slate 800 */
-  --chart-text: #e2e8f0; /* Slate 200 */
+  --chart-grid: #1e293b;
+  --chart-text: #e2e8f0;
 
   /* Tooltips */
   --tooltip-bg: #0f172a;
   --tooltip-border: #1e293b;
   --tooltip-text: #f8fafc;
-  --tooltip-text2: #2dd4bf; /* Matches Brand Default */
+  --tooltip-text2: #2dd4bf;
 
-  /* Typography Colors - Adjusted for Dark Mode */
-  --text-type1: #2dd4bf; /* Teal 400 (Was Teal 600) */
-  --text-type2: #38bdf8; /* Sky 400 (Was Sky 500) */
-  --text-type3: #a5b4fc; /* Indigo 300 (Was Indigo 400) */
+  /* Typography Colors */
+  --text-type1: #2dd4bf;
+  --text-type2: #38bdf8;
+  --text-type3: #a5b4fc;
 
-  /* header color */
-
-  --logout-color: #f87171; /* Red 400 for logout button in dark mode */
+  --logout-color: #f87171;
+  --box-color: #ccfbf1; /* Teal 100 (Brand Soft) */
 }
 
 @theme inline {
