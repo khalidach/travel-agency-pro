@@ -25,7 +25,7 @@ export function Sidebar({ dict, userRole, lang }: SidebarProps) {
   );
 
   return (
-    <aside className="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 h-[calc(100vh-64px)] overflow-y-auto hidden lg:block transition-colors">
+    <aside className="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 min-h-screen overflow-y-auto transition-colors sidebar">
       <nav className="p-4 space-y-2">
         {filteredMenu.map((item) => {
           const hasSubItems = item.subItems && item.subItems.length > 0;
