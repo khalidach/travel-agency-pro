@@ -4,31 +4,63 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  /* Core Backgrounds */
   --background: #ffffff;
-  --foreground: #0f172a;
-  --chart-grid: #e2e8f0;
+  --foreground: #0f172a; /* Slate 900 */
+
+  /* Brand Palette - Light Mode (Darker for contrast on white) */
+  --brand-light: #0ea5e9; /* Sky 500 */
+  --brand-default: #0d9488; /* Teal 600 */
+  --brand-dark: #0369a1; /* Sky 700 */
+
+  /* Chart & UI Elements */
+  --chart-grid: #e2e8f0; /* Slate 200 */
+  --chart-text: #0f172a;
+
+  /* Tooltips */
   --tooltip-bg: #ffffff;
   --tooltip-border: #e2e8f0;
-  --tooltip-text: #000;
+  --tooltip-text: #000000;
   --tooltip-text2: #0d9488;
-  --chart-text: #0f172a;
-  --text-type1: #0d9488;
-  --text-type2: #0ea5e9;
-  --text-type3: #818cf8;
+
+  /* Typography Colors */
+  --text-type1: #0d9488; /* Matches Brand Default */
+  --text-type2: #0ea5e9; /* Matches Brand Light */
+  --text-type3: #818cf8; /* Indigo 400 */
+
+  /* header color */
+
+  --logout-color: #ef4444; /* Red 500 for logout button in light mode */
 }
 
 .dark {
-  --background: #020617;
-  --foreground: #f8fafc;
-  --chart-grid: #1e293b;
+  /* Core Backgrounds */
+  --background: #020617; /* Slate 950 (Deep, rich dark) */
+  --foreground: #f8fafc; /* Slate 50 (Soft white) */
+
+  /* Brand Palette - Dark Mode (Lighter/Brighter for contrast on dark) */
+  --brand-light: #7dd3fc; /* Sky 300 - Bright & airy */
+  --brand-default: #2dd4bf; /* Teal 400 - Vibrant & legible */
+  --brand-dark: #0ea5e9; /* Sky 500 - Visible but deeper than light/default */
+
+  /* Chart & UI Elements */
+  --chart-grid: #1e293b; /* Slate 800 */
+  --chart-text: #e2e8f0; /* Slate 200 */
+
+  /* Tooltips */
   --tooltip-bg: #0f172a;
   --tooltip-border: #1e293b;
   --tooltip-text: #f8fafc;
-  --tooltip-text2: #04decc;
-  --chart-text: #e3e2e2;
-  --text-type1: #04decc;
-  --text-type2: #00aeff;
-  --text-type3: #bdc3fe;
+  --tooltip-text2: #2dd4bf; /* Matches Brand Default */
+
+  /* Typography Colors - Adjusted for Dark Mode */
+  --text-type1: #2dd4bf; /* Teal 400 (Was Teal 600) */
+  --text-type2: #38bdf8; /* Sky 400 (Was Sky 500) */
+  --text-type3: #a5b4fc; /* Indigo 300 (Was Indigo 400) */
+
+  /* header color */
+
+  --logout-color: #f87171; /* Red 400 for logout button in dark mode */
 }
 
 @theme inline {
