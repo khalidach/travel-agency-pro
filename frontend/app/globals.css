@@ -1,31 +1,52 @@
-/* Updated globals.css to ensure global theme transitions are smooth */
+/* khalidach/travel-agency-pro/frontend/app/globals.css */
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --chart-grid: #e2e8f0;
+  --tooltip-bg: #ffffff;
+  --tooltip-border: #e2e8f0;
+  --tooltip-text: #000;
+  --tooltip-text2: #0d9488;
+  --chart-text: #0f172a;
+  --text-type1: #0d9488;
+  --text-type2: #0ea5e9;
+  --text-type3: #818cf8;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #020617;
+  --foreground: #f8fafc;
+  --chart-grid: #1e293b;
+  --tooltip-bg: #0f172a;
+  --tooltip-border: #1e293b;
+  --tooltip-text: #f8fafc;
+  --tooltip-text2: #04decc;
+  --chart-text: #e3e2e2;
+  --text-type1: #04decc;
+  --text-type2: #00aeff;
+  --text-type3: #bdc3fe;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  /* Added smooth color transition for the entire body */
   transition:
-    background-color 0.5s ease-in-out,
-    color 0.5s ease-in-out;
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Smooth transitions for chart elements */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  transition: stroke 0.3s ease;
 }

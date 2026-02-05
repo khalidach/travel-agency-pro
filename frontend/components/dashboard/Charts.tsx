@@ -1,3 +1,4 @@
+/* khalidach/travel-agency-pro/frontend/components/dashboard/Charts.tsx */
 "use client";
 import {
   BarChart,
@@ -13,7 +14,8 @@ import {
   Legend,
 } from "recharts";
 
-const COLORS = ["#0d9488", "#0ea5e9", "#6366f1"];
+// Updated colors to be more "Neon-Soft" for dark mode compatibility
+const COLORS = ["#0d9488", "#0ea5e9", "#818cf8"];
 
 interface ProgramData {
   name: string;
@@ -41,19 +43,31 @@ export const ProgramDistribution = ({ data }: { data: ProgramData[] }) => (
           stroke="none"
         >
           {data.map((_, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            <Cell
+              key={`cell-${index}`}
+              fill={`var(--text-type${(index % 3) + 1})`}
+            />
           ))}
         </Pie>
         <Tooltip
           contentStyle={{
-            backgroundColor: "var(--tooltip-bg, #fff)",
-            border: "none",
+            backgroundColor: "var(--tooltip-bg)",
+            borderColor: "var(--tooltip-border)",
             borderRadius: "8px",
-            boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+            color: "var(--tooltip-text2)",
+            boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
           }}
-          itemStyle={{ color: "var(--tooltip-text, #1e293b)" }}
+          itemStyle={{ color: "var(--tooltip-text)" }}
         />
-        <Legend verticalAlign="bottom" height={36} />
+        <Legend
+          verticalAlign="bottom"
+          height={36}
+          formatter={(value) => (
+            <span className="text-slate-600 dark:text-slate-400 text-sm">
+              {value}
+            </span>
+          )}
+        />
       </PieChart>
     </ResponsiveContainer>
   </div>
@@ -61,7 +75,7 @@ export const ProgramDistribution = ({ data }: { data: ProgramData[] }) => (
 
 export const ServiceProfitsChart = ({
   data,
-  profitLabel, // New prop for translation
+  profitLabel,
 }: {
   data: ServiceProfitData[];
   profitLabel: string;
@@ -72,32 +86,33 @@ export const ServiceProfitsChart = ({
         <CartesianGrid
           strokeDasharray="3 3"
           vertical={false}
-          stroke="#e2e8f0"
-          className="dark:stroke-slate-800"
+          stroke="var(--chart-grid)"
         />
         <XAxis
           dataKey="name"
           axisLine={false}
           tickLine={false}
-          tick={{ fill: "#94a3b8", fontSize: 12 }}
+          tick={{ fill: "var(--chart-text)", fontSize: 12 }}
+          dy={10}
         />
         <YAxis
           axisLine={false}
           tickLine={false}
-          tick={{ fill: "#94a3b8", fontSize: 12 }}
+          tick={{ fill: "var(--chart-text)", fontSize: 12 }}
         />
         <Tooltip
           cursor={{ fill: "rgba(148, 163, 184, 0.1)" }}
           contentStyle={{
-            backgroundColor: "rgb(15 23 42)",
-            color: "#fff",
-            border: "none",
+            backgroundColor: "var(--tooltip-bg)",
+            borderColor: "var(--tooltip-border)",
             borderRadius: "8px",
+            color: "var(--tooltip-text)",
           }}
+          itemStyle={{ color: "var(--tooltip-text2)" }}
         />
         <Bar
           dataKey="profit"
-          name={profitLabel} // This ensures the tooltip shows the translated word
+          name={profitLabel}
           fill="#0d9488"
           radius={[4, 4, 0, 0]}
           barSize={40}
