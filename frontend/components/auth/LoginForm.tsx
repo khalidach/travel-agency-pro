@@ -13,9 +13,9 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 // Schema definition
 const loginSchema = z.object({
-  agencyName: z.string().min(2),
-  username: z.string().min(1),
-  password: z.string().min(1),
+  agencyName: z.string().min(2, "Agency name is required"),
+  username: z.string().min(1, "Username is required"),
+  password: z.string().min(1, "Password is required"),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -56,11 +56,33 @@ export function LoginForm({ dict, lang }: LoginFormProps) {
     setLoading(true);
     setError(null);
     try {
-      console.log("Login:", data);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"}/auth/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Login failed");
+      }
+
+      const result = await response.json();
+
+      // Store token (securely - consider using HttpOnly cookies for production)
+      localStorage.setItem("accessToken", result.access_token);
+
       router.push(`/${lang}/dashboard`);
-    } catch (err) {
-      setError("Login failed");
+    } catch (err: Error | unknown) {
+      console.error(err);
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Invalid credentials or connection error",
+      );
     } finally {
       setLoading(false);
     }
@@ -99,6 +121,13 @@ export function LoginForm({ dict, lang }: LoginFormProps) {
         className="space-y-5"
         dir={isRtl ? "rtl" : "ltr"}
       >
+        {/* Error Message Display */}
+        {error && (
+          <div className="p-3 text-sm text-red-500 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900 rounded-md">
+            {error}
+          </div>
+        )}
+
         {/* Agency Name */}
         <div className="space-y-1">
           <label className="text-sm font-medium text-[var(--text-primary)]">

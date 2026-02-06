@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  // url = env("DATABASE_URL")  <-- REMOVED (Handled in prisma.config.ts now)
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id          String   @id @default(uuid())
+  username    String
+  password    String
+  agencyName  String   @map("agency_name")
+  phoneNumber String?  @map("phone_number")
+  email       String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@unique([agencyName, username])
+  @@map("users")
+}
