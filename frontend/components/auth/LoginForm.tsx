@@ -1,0 +1,170 @@
+"use client";
+
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
+import { Globe } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+
+// Schema definition
+const loginSchema = z.object({
+  agencyName: z.string().min(2),
+  username: z.string().min(1),
+  password: z.string().min(1),
+});
+
+type LoginFormValues = z.infer<typeof loginSchema>;
+
+interface AuthDict {
+  auth: {
+    title: string;
+    subtitle: string;
+    agencyName: string;
+    agencyPlaceholder: string;
+    username: string;
+    usernamePlaceholder: string;
+    password: string;
+    loading: string;
+    loginButton: string;
+  };
+}
+
+interface LoginFormProps {
+  dict: AuthDict;
+  lang: string;
+}
+
+export function LoginForm({ dict, lang }: LoginFormProps) {
+  const router = useRouter();
+  const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = async (data: LoginFormValues) => {
+    setLoading(true);
+    setError(null);
+    try {
+      console.log("Login:", data);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      router.push(`/${lang}/dashboard`);
+    } catch (err) {
+      setError("Login failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const isRtl = lang === "ar";
+
+  return (
+    <div className="relative bg-[var(--bg-surface)] border border-[var(--border-default)] py-8 px-8 shadow-xl rounded-xl w-full transition-colors duration-300">
+      {/* Top Right Controls */}
+      <div className="absolute top-4 right-4 flex items-center gap-2">
+        <div className="bg-[var(--bg-hover)] rounded-md flex items-center p-1">
+          <LanguageSwitcher />
+        </div>
+        <div className="bg-[var(--bg-hover)] rounded-md">
+          <ThemeToggle />
+        </div>
+      </div>
+
+      {/* Header */}
+      <div className="mb-8 text-center space-y-2 mt-4">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[var(--accent-sky-bg)] text-[var(--brand-default)] mb-2">
+          <Globe className="w-6 h-6" />
+        </div>
+        <h1 className="text-2xl font-bold text-[var(--text-primary)]">
+          {dict.auth.title}
+        </h1>
+        <p className="text-sm text-[var(--text-secondary)]">
+          {dict.auth.subtitle}
+        </p>
+      </div>
+
+      {/* Login Form */}
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-5"
+        dir={isRtl ? "rtl" : "ltr"}
+      >
+        {/* Agency Name */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium text-[var(--text-primary)]">
+            {dict.auth.agencyName}
+          </label>
+          <Input
+            {...register("agencyName")}
+            placeholder={dict.auth.agencyPlaceholder}
+            className={`bg-[var(--bg-subtle)] border-[var(--border-default)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus-visible:ring-[var(--brand-default)] ${
+              isRtl ? "text-right" : ""
+            }`}
+          />
+          {errors.agencyName && (
+            <p className="text-xs text-red-500">
+              {errors.agencyName.message || "Required"}
+            </p>
+          )}
+        </div>
+
+        {/* Username */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium text-[var(--text-primary)]">
+            {dict.auth.username}
+          </label>
+          <Input
+            {...register("username")}
+            placeholder={dict.auth.usernamePlaceholder}
+            className={`bg-[var(--bg-subtle)] border-[var(--border-default)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus-visible:ring-[var(--brand-default)] ${
+              isRtl ? "text-right" : ""
+            }`}
+          />
+          {errors.username && (
+            <p className="text-xs text-red-500">
+              {errors.username.message || "Required"}
+            </p>
+          )}
+        </div>
+
+        {/* Password */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium text-[var(--text-primary)]">
+            {dict.auth.password}
+          </label>
+          <Input
+            type="password"
+            {...register("password")}
+            placeholder="••••••"
+            className={`bg-[var(--bg-subtle)] border-[var(--border-default)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus-visible:ring-[var(--brand-default)] ${
+              isRtl ? "text-right" : ""
+            }`}
+          />
+          {errors.password && (
+            <p className="text-xs text-red-500">
+              {errors.password.message || "Required"}
+            </p>
+          )}
+        </div>
+
+        <Button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-[var(--brand-default)] hover:bg-[var(--brand-dark)] text-white"
+        >
+          {loading ? dict.auth.loading : dict.auth.loginButton}
+        </Button>
+      </form>
+    </div>
+  );
+}

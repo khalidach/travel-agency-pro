@@ -54,5 +54,16 @@
       "paid": "Payé",
       "pending": "En attente"
     }
+  },
+  "auth": {
+    "title": "Connexion",
+    "subtitle": "Accédez à votre espace agence",
+    "agencyName": "Nom de l'Agence",
+    "agencyPlaceholder": "ex: Trevio Travel",
+    "username": "Nom d'utilisateur",
+    "usernamePlaceholder": "ex: admin",
+    "password": "Mot de passe",
+    "loginButton": "Se connecter",
+    "loading": "Connexion en cours..."
   }
 }

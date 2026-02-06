@@ -54,5 +54,16 @@
       "paid": "مدفوع",
       "pending": "قيد الانتظار"
     }
+  },
+  "auth": {
+    "title": "تسجيل الدخول",
+    "subtitle": "أدخل تفاصيل حسابك",
+    "agencyName": "اسم الوكالة",
+    "agencyPlaceholder": "تريفيو للسفر",
+    "username": "اسم المستخدم",
+    "usernamePlaceholder": "أدمن",
+    "password": "كلمة المرور",
+    "loginButton": "دخول",
+    "loading": "جاري التحميل..."
   }
 }
