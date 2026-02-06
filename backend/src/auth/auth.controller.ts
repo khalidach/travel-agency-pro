@@ -11,10 +11,4 @@ export class AuthController {
   async login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }
-
-  // Only for setting up your first user
-  @Post('register')
-  async register(@Body() body: any) {
-    return this.authService.register(body);
-  }
 }
