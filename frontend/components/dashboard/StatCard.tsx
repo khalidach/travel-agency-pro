@@ -1,4 +1,4 @@
-// components/dashboard/StatCard.tsx
+/* khalidach/travel-agency-pro/frontend/components/dashboard/StatCard.tsx */
 import { LucideIcon } from "lucide-react";
 
 interface StatCardProps {
@@ -15,13 +15,11 @@ export const StatCard = ({
   icon: Icon,
   colorClass,
 }: StatCardProps) => (
-  <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+  <div className="bg-[var(--bg-surface)] p-6 rounded-xl border border-[var(--border-default)] shadow-sm hover:shadow-md transition-all">
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
-          {title}
-        </p>
-        <h3 className="text-2xl font-bold mt-1 text-slate-900 dark:text-white">
+        <p className="text-sm font-medium text-[var(--text-muted)]">{title}</p>
+        <h3 className="text-2xl font-bold mt-1 text-[var(--text-primary)]">
           {value}
         </h3>
       </div>

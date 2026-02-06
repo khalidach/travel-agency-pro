@@ -1,4 +1,4 @@
-// frontend/components/dashboard/RecentActivity.tsx
+/* khalidach/travel-agency-pro/frontend/components/dashboard/RecentActivity.tsx */
 import { Booking } from "@/types/dashboard";
 
 interface RecentActivityProps {
@@ -22,43 +22,43 @@ export const RecentActivityTable = ({
   <div className="overflow-x-auto">
     <table className="w-full text-left rtl:text-right">
       <thead>
-        <tr className="border-b border-slate-100 dark:border-slate-800">
-          <th className="pb-4 font-semibold text-slate-600 dark:text-slate-400 text-sm">
+        <tr className="border-b border-[var(--border-subtle)]">
+          <th className="pb-4 font-semibold text-[var(--text-secondary)] text-sm">
             {dict.clientName}
           </th>
-          <th className="pb-4 font-semibold text-slate-600 dark:text-slate-400 text-sm">
+          <th className="pb-4 font-semibold text-[var(--text-secondary)] text-sm">
             {dict.passport}
           </th>
-          <th className="pb-4 font-semibold text-slate-600 dark:text-slate-400 text-sm">
+          <th className="pb-4 font-semibold text-[var(--text-secondary)] text-sm">
             {dict.price}
           </th>
-          <th className="pb-4 font-semibold text-slate-600 dark:text-slate-400 text-sm">
+          <th className="pb-4 font-semibold text-[var(--text-secondary)] text-sm">
             {dict.status}
           </th>
         </tr>
       </thead>
-      <tbody className="divide-y divide-slate-50 dark:divide-slate-800/50">
+      <tbody className="divide-y divide-[var(--border-subtle)]">
         {bookings.map((booking) => (
           <tr
             key={booking.id}
-            className="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+            className="group hover:bg-[var(--bg-hover)] transition-colors"
           >
-            <td className="py-4 text-sm font-medium text-slate-900 dark:text-slate-200">
+            <td className="py-4 text-sm font-medium text-[var(--text-primary)]">
               {booking.clientName}
             </td>
-            <td className="py-4 text-sm text-slate-500 dark:text-slate-400">
+            <td className="py-4 text-sm text-[var(--text-muted)]">
               {booking.passportNumber}
             </td>
-            <td className="py-4 text-sm font-semibold text-slate-900 dark:text-white">
+            <td className="py-4 text-sm font-semibold text-[var(--text-primary)]">
               {new Intl.NumberFormat("fr-MA").format(booking.sellingPrice)}{" "}
               {currency}
             </td>
             <td className="py-4">
               <span
-                className={`px-2.5 py-1 rounded-full text-xs font-medium ${
+                className={`px-2.5 py-1 rounded-full text-xs font-medium border ${
                   booking.status === "Paid"
-                    ? "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800/50"
-                    : "bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 border border-amber-100 dark:border-amber-800/50"
+                    ? "bg-[var(--status-success-bg)] text-[var(--status-success-text)] border-[var(--status-success-border)]"
+                    : "bg-[var(--status-warning-bg)] text-[var(--status-warning-text)] border-[var(--status-warning-border)]"
                 }`}
               >
                 {booking.status === "Paid" ? dict.paid : dict.pending}

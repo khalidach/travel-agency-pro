@@ -1,3 +1,4 @@
+/* khalidach/travel-agency-pro/frontend/components/dashboard/DashboardClient.tsx */
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
@@ -109,29 +110,29 @@ export function DashboardClient({ dict }: DashboardClientProps) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 p-4 md:p-8 transition-colors">
+    <div className="min-h-screen bg-[var(--bg-subtle)] p-4 md:p-8 transition-colors">
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+          <h1 className="text-2xl font-bold text-[var(--text-primary)]">
             {dict.dashboard.header.title}
           </h1>
-          <p className="text-slate-500 dark:text-slate-400">
+          <p className="text-[var(--text-muted)]">
             {dict.dashboard.header.subtitle}
           </p>
         </div>
 
-        <div className="flex items-center gap-2 bg-white dark:bg-slate-900 p-2 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
-          <Calendar className="w-4 h-4 text-slate-400 mx-2" />
+        <div className="flex items-center gap-2 bg-[var(--bg-surface)] p-2 rounded-lg border border-[var(--border-default)] shadow-sm">
+          <Calendar className="w-4 h-4 text-[var(--icon-muted)] mx-2" />
           <input
             type="date"
-            className="text-sm border-none bg-transparent focus:ring-0 text-slate-600 dark:text-slate-300 cursor-pointer"
+            className="text-sm border-none bg-transparent focus:ring-0 text-[var(--text-secondary)] cursor-pointer"
           />
-          <span className="text-slate-300 dark:text-slate-600">→</span>
+          <span className="text-[var(--text-tertiary)]">→</span>
           <input
             type="date"
-            className="text-sm border-none bg-transparent focus:ring-0 text-slate-600 dark:text-slate-300 cursor-pointer"
+            className="text-sm border-none bg-transparent focus:ring-0 text-[var(--text-secondary)] cursor-pointer"
           />
-          <button className="bg-teal-600 text-white p-1.5 rounded-md hover:bg-teal-700 transition-colors">
+          <button className="bg-[var(--brand-default)] text-white p-1.5 rounded-md hover:bg-[var(--brand-dark)] transition-colors">
             <Filter className="w-4 h-4" />
           </button>
         </div>
@@ -142,55 +143,55 @@ export function DashboardClient({ dict }: DashboardClientProps) {
           title={dict.dashboard.stats.revenue}
           value={`450 230 ${dict.common.currency}`}
           icon={Wallet}
-          colorClass="bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400"
+          colorClass="bg-[var(--accent-teal-bg)] text-[var(--accent-teal-text)]"
         />
         <StatCard
           title={dict.dashboard.stats.profit}
           value={`82 400 ${dict.common.currency}`}
           icon={LayoutDashboard}
-          colorClass="bg-sky-50 dark:bg-sky-900/20 text-sky-600 dark:text-sky-400"
+          colorClass="bg-[var(--accent-sky-bg)] text-[var(--accent-sky-text)]"
         />
         <StatCard
           title={dict.dashboard.stats.bookings}
           value="156"
           icon={Calendar}
-          colorClass="bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400"
+          colorClass="bg-[var(--accent-indigo-bg)] text-[var(--accent-indigo-text)]"
         />
         <StatCard
           title={dict.dashboard.stats.programs}
           value="12"
           icon={Briefcase}
-          colorClass="bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400"
+          colorClass="bg-[var(--accent-cyan-bg)] text-[var(--accent-cyan-text)]"
         />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-        <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
-          <h3 className="font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
-            <LayoutDashboard className="w-5 h-5 text-teal-600" />
+        <div className="lg:col-span-2 bg-[var(--bg-surface)] p-6 rounded-xl border border-[var(--border-default)] shadow-sm">
+          <h3 className="font-bold text-[var(--text-primary)] mb-6 flex items-center gap-2">
+            <LayoutDashboard className="w-5 h-5 text-[var(--brand-default)]" />
             {dict.dashboard.charts.serviceProfits}
           </h3>
           <ServiceProfitsChart
             data={translatedServiceData}
-            profitLabel={dict.dashboard.stats.profit} // Passed here
+            profitLabel={dict.dashboard.stats.profit}
           />
         </div>
 
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
-          <h3 className="font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
-            <PieIcon className="w-5 h-5 text-sky-600" />
+        <div className="bg-[var(--bg-surface)] p-6 rounded-xl border border-[var(--border-default)] shadow-sm">
+          <h3 className="font-bold text-[var(--text-primary)] mb-6 flex items-center gap-2">
+            <PieIcon className="w-5 h-5 text-[var(--brand-light)]" />
             {dict.dashboard.charts.programDist}
           </h3>
           <ProgramDistribution data={translatedProgramData} />
         </div>
       </div>
 
-      <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+      <div className="bg-[var(--bg-surface)] p-6 rounded-xl border border-[var(--border-default)] shadow-sm">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="font-bold text-slate-800 dark:text-white">
+          <h3 className="font-bold text-[var(--text-primary)]">
             {dict.dashboard.table.title}
           </h3>
-          <button className="text-sm text-teal-600 dark:text-teal-400 font-semibold hover:underline">
+          <button className="text-sm text-[var(--brand-default)] font-semibold hover:underline">
             {dict.dashboard.table.viewAll}
           </button>
         </div>

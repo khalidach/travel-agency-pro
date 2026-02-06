@@ -46,6 +46,28 @@
 
   --logout-color: #ef4444;
   --box-color: #429b88; /* Teal 100 (Brand Soft) */
+
+  /* Status Colors (Light) */
+  --status-success-bg: #ecfdf5; /* Emerald 50 */
+  --status-success-text: #047857; /* Emerald 700 */
+  --status-success-border: #d1fae5; /* Emerald 100 */
+
+  --status-warning-bg: #fffbeb; /* Amber 50 */
+  --status-warning-text: #b45309; /* Amber 700 */
+  --status-warning-border: #fef3c7; /* Amber 100 */
+
+  /* Dashboard Accents (Light) */
+  --accent-teal-bg: #f0fdfa; /* Teal 50 */
+  --accent-teal-text: #0d9488; /* Teal 600 */
+
+  --accent-sky-bg: #f0f9ff; /* Sky 50 */
+  --accent-sky-text: #0284c7; /* Sky 600 */
+
+  --accent-indigo-bg: #eef2ff; /* Indigo 50 */
+  --accent-indigo-text: #4f46e5; /* Indigo 600 */
+
+  --accent-cyan-bg: #ecfeff; /* Cyan 50 */
+  --accent-cyan-text: #0891b2; /* Cyan 600 */
 }
 
 .dark {
@@ -91,6 +113,28 @@
 
   --logout-color: #f87171;
   --box-color: #ccfbf1; /* Teal 100 (Brand Soft) */
+
+  /* Status Colors (Dark) */
+  --status-success-bg: rgba(6, 95, 70, 0.2); /* Emerald 900/20 */
+  --status-success-text: #34d399; /* Emerald 400 */
+  --status-success-border: rgba(6, 95, 70, 0.5); /* Emerald 800/50 */
+
+  --status-warning-bg: rgba(120, 53, 15, 0.2); /* Amber 900/20 */
+  --status-warning-text: #fbbf24; /* Amber 400 */
+  --status-warning-border: rgba(120, 53, 15, 0.5); /* Amber 800/50 */
+
+  /* Dashboard Accents (Dark) */
+  --accent-teal-bg: rgba(19, 78, 74, 0.3); /* Teal 900/30 */
+  --accent-teal-text: #2dd4bf; /* Teal 400 */
+
+  --accent-sky-bg: rgba(12, 74, 110, 0.3); /* Sky 900/30 */
+  --accent-sky-text: #38bdf8; /* Sky 400 */
+
+  --accent-indigo-bg: rgba(49, 46, 129, 0.3); /* Indigo 900/30 */
+  --accent-indigo-text: #818cf8; /* Indigo 400 */
+
+  --accent-cyan-bg: rgba(22, 78, 99, 0.3); /* Cyan 900/30 */
+  --accent-cyan-text: #22d3ee; /* Cyan 400 */
 }
 
 @theme inline {

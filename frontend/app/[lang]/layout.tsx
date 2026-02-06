@@ -1,4 +1,4 @@
-// frontend/app/[lang]/layout.tsx
+/* khalidach/travel-agency-pro/frontend/app/[lang]/layout.tsx */
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
@@ -54,7 +54,7 @@ export default async function RootLayout({
   return (
     <html lang={lang} dir={direction} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)] transition-colors`}
       >
         <ThemeProvider
           attribute="class"
@@ -66,7 +66,7 @@ export default async function RootLayout({
             <Header dict={dict} lang={lang} />
             <div className="flex flex-1 overflow-hidden">
               <Sidebar dict={dict} userRole={user.role} lang={lang} />
-              <main className="flex-1 overflow-y-auto relative">
+              <main className="flex-1 overflow-y-auto relative bg-[var(--bg-subtle)]">
                 {children}
               </main>
             </div>

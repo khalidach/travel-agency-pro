@@ -60,7 +60,7 @@ export const ProgramDistribution = ({ data }: { data: ProgramData[] }) => (
           verticalAlign="bottom"
           height={36}
           formatter={(value) => (
-            <span className="text-slate-600 dark:text-slate-400 text-sm">
+            <span className="text-[var(--text-secondary)] text-sm">
               {value}
             </span>
           )}
@@ -98,7 +98,7 @@ export const ServiceProfitsChart = ({
           tick={{ fill: "var(--chart-text)", fontSize: 12 }}
         />
         <Tooltip
-          cursor={{ fill: "rgba(148, 163, 184, 0.1)" }}
+          cursor={{ fill: "var(--bg-hover)" }}
           contentStyle={{
             backgroundColor: "var(--tooltip-bg)",
             borderColor: "var(--tooltip-border)",
@@ -110,7 +110,7 @@ export const ServiceProfitsChart = ({
         <Bar
           dataKey="profit"
           name={profitLabel}
-          fill="#0d9488"
+          fill="var(--brand-default)"
           radius={[4, 4, 0, 0]}
           barSize={40}
         />
