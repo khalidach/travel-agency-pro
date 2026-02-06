@@ -1,4 +1,3 @@
-/* frontend/app/[lang]/(dashboard)/layout.tsx */
 import { Header } from "@/components/layout/Header";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { getDictionary } from "@/lib/get-dictionaries";
@@ -12,9 +11,7 @@ export default async function DashboardLayout({
 }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-
-  // Mock user for layout (Will come from auth later)
-  const user = { role: "admin" };
+  const user = { role: "admin" }; // Mock user
 
   return (
     <div className="min-h-screen flex flex-col">
