@@ -50,15 +50,4 @@ export class AuthService {
       },
     };
   }
-
-  // Temporary helper to register a user manually for testing
-  async register(data: any) {
-    const hashedPassword = await bcrypt.hash(data.password, 10);
-    return this.prisma.user.create({
-      data: {
-        ...data,
-        password: hashedPassword,
-      },
-    });
-  }
 }
