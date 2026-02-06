@@ -1,35 +1,19 @@
-/* khalidach/travel-agency-pro/frontend/app/[lang]/layout.tsx */
+/* frontend/app/[lang]/layout.tsx */
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { getDictionary } from "@/lib/get-dictionaries";
-import { Header } from "@/components/layout/Header";
-import { Sidebar } from "@/components/layout/Sidebar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang?: string }>;
-}): Promise<Metadata> {
-  const { lang = "fr" } = await params;
-  const dict = await getDictionary(lang as "ar" | "fr");
-
-  return {
-    title: `${dict.common.title} - ${dict.common.dashboard}`,
-    description: dict.common.description,
-  };
-}
+export const metadata: Metadata = {
+  title: "Trevio",
+  description: "Travel Agency Management",
+};
 
 export async function generateStaticParams() {
   return [{ lang: "ar" }, { lang: "fr" }];
@@ -40,21 +24,15 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang?: string }>;
+  params: Promise<{ lang: string }>;
 }) {
-  const { lang = "fr" } = await params;
+  const { lang } = await params;
   const direction = lang === "ar" ? "rtl" : "ltr";
-  const dict = await getDictionary(lang as "ar" | "fr");
-
-  // Mock user data for initialization
-  const user = {
-    role: "admin",
-  };
 
   return (
     <html lang={lang} dir={direction} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)] transition-colors`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}
       >
         <ThemeProvider
           attribute="class"
@@ -62,15 +40,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen flex flex-col">
-            <Header dict={dict} lang={lang} />
-            <div className="flex flex-1 overflow-hidden">
-              <Sidebar dict={dict} userRole={user.role} lang={lang} />
-              <main className="flex-1 overflow-y-auto relative bg-[var(--bg-subtle)]">
-                {children}
-              </main>
-            </div>
-          </div>
+          {children}
         </ThemeProvider>
       </body>
     </html>
