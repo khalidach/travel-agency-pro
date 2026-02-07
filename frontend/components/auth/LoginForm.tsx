@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { Globe } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { fetchClient } from "@/lib/api"; // Import the helper
 
 // Schema definition
 const loginSchema = z.object({
@@ -56,26 +57,14 @@ export function LoginForm({ dict, lang }: LoginFormProps) {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"}/auth/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-          credentials: "include", // <--- CRITICAL: Tells browser to accept the cookie
-        },
-      );
+      // ✅ 1. Use centralized client (Handles URL, Headers, Credentials)
+      await fetchClient("/auth/login", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Login failed");
-      }
-
-      // We do NOT store token in localStorage anymore.
-      // The browser automatically stores the HttpOnly cookie.
-
+      router.refresh();
       router.push(`/${lang}/dashboard`);
-      router.refresh(); // Ensure middleware re-runs on navigation
     } catch (err: Error | unknown) {
       console.error(err);
       setError(
