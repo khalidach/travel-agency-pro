@@ -62,6 +62,7 @@ export function LoginForm({ dict, lang }: LoginFormProps) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
+          credentials: "include", // <--- CRITICAL: Tells browser to accept the cookie
         },
       );
 
@@ -70,12 +71,11 @@ export function LoginForm({ dict, lang }: LoginFormProps) {
         throw new Error(errorData.message || "Login failed");
       }
 
-      const result = await response.json();
-
-      // Store token (securely - consider using HttpOnly cookies for production)
-      localStorage.setItem("accessToken", result.access_token);
+      // We do NOT store token in localStorage anymore.
+      // The browser automatically stores the HttpOnly cookie.
 
       router.push(`/${lang}/dashboard`);
+      router.refresh(); // Ensure middleware re-runs on navigation
     } catch (err: Error | unknown) {
       console.error(err);
       setError(

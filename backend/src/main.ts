@@ -1,19 +1,22 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Enable CORS for Frontend
+  // Enable CORS with Credentials for Cookies
   app.enableCors({
-    origin: 'http://localhost:3000', // Adjust if frontend port differs
-    credentials: true,
+    origin: 'http://localhost:3000', // Must match your frontend URL exactly
+    credentials: true, // Required for cookies
   });
+
+  app.use(cookieParser());
 
   // Enable Validation
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(process.env.PORT ?? 3001); // Run backend on 3001 to avoid conflict with Next.js
+  await app.listen(process.env.PORT ?? 3001);
 }
 bootstrap();
